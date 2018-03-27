@@ -20,7 +20,15 @@ function paintToCanvas() {
 
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
-    }, 24);
+        let pixels = ctx.getImageData(0, 0, width, height);
+    }, 16);
+}
+
+function takePhoto() {
+    snap.currentTime = 0;
+    snap.play();
 }
 
 getVideo();
+
+video.addEventListener('canplay', paintToCanvas);
